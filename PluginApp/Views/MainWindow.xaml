@@ -1,0 +1,30 @@
+﻿<Window x:Class="PluginApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:PluginApp.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel, IsDesignTimeCreatable=False}"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView
+            MouseDoubleClick="ListView_MouseDoubleClick"
+            ItemsSource="{Binding Plugins}"
+            SelectedItem="{Binding SelectedPlugin}">
+            
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn 
+                        Header="Name"
+                        Width="120"
+                        DisplayMemberBinding="{Binding Metadata.Name}" />
+                    <GridViewColumn
+                        Header="Description"
+                        Width="240"
+                        DisplayMemberBinding="{Binding Metadata.Description}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
